@@ -18,6 +18,6 @@ public class SecurityConfigForDevelop extends SecurityConfig {
     @Override
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");;
+                .withUser("user").password("password").roles("USER");
     }
 }
