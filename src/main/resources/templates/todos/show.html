@@ -1,0 +1,48 @@
+<html xmlns="htp://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/main">
+<head>
+    <title th:text="#{view.todos.show.title}">Show</title>
+</head>
+
+<body>
+<a layout:fragment="title" th:text="#{view.todos.show.title}"/>
+<li layout:fragment="back">
+    <a href="#" th:href="${#mvc.url('TC#index').build()}"><i class="material-icons">arrow_back</i></a>
+</li>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col m12">
+            <div class="card">
+                <div class="card-content black-text">
+                    <a class="btn-circle waves-effect btn-small right black-text" data-activates='dropdown-menu'>
+                        <i class="material-icons">more_vert</i>
+                    </a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown-menu' class='dropdown-content'>
+                        <li><a href="#!">delete</a></li>
+                    </ul>
+
+                    <span class="card-title"><h4 class="black-text" th:text="#{view.todos.show.todo-detail}">Todo Detail</h4></span>
+
+                    <div class="row">
+                        <div class="col">
+                            <h5 th:text="#{model.attributes.todo.content}">Cotent</h5>
+                            <p th:text="${todo.content}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-action-btn" style="top: 143px; right: 94px;">
+
+            <a th:href="${#mvc.url('TC#edit').arg(0, todo.id).build()}" class="btn-floating btn-large waves-effect waves-light red">
+                <i class="material-icons">mode_edit</i>
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+</html>

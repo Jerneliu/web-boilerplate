@@ -1,0 +1,34 @@
+<html xmlns="htp://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/main">
+<head>
+    <title th:text="#{view.todos.new.title}">New Todo</title>
+</head>
+
+<body>
+<a layout:fragment="title" th:text="#{view.todos.new.title}"/>
+<li layout:fragment="back">
+    <a href="#" th:href="${#mvc.url('TC#index').build()}"><i class="material-icons">arrow_back</i></a>
+</li>
+<section layout:fragment="content">
+    <div class="row">
+        <form th:fragment="_form" class="col s12" method="post" th:action="${#mvc.url('TC#create').build()}" th:object="${todo}">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="content" type="text" th:field="*{content}"
+                           th:attr="class=${#fields.hasErrors('content') ? 'invalid' : ''} "/>
+                    <label for="content" th:text="#{model.attributes.todo.content}">Content</label>
+                    <p class="filed-error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action" th:text="#{view.todos.new.send}">
+                Submit<i class="material-icons right">send</i>
+            </button>
+
+        </form>
+    </div>
+</section>
+</body>
+</html>

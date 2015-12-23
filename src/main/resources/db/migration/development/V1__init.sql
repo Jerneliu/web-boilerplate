@@ -1,0 +1,7 @@
+/*
+CREATE TABLE todos
+(
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  content VARCHAR(50)
+)
+*/

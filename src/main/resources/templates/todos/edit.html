@@ -1,0 +1,21 @@
+<html xmlns="htp://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/main">
+<head>
+    <title th:text="#{view.todos.edit.title}">Edit Todo</title>
+</head>
+
+<body>
+<a layout:fragment="title" th:text="#{view.todos.edit.title}"/>
+<li layout:fragment="back">
+    <a href="#" th:href="${#mvc.url('TC#index').build()}"><i class="material-icons">arrow_back</i></a>
+</li>
+<section layout:fragment="content">
+    <div class="row">
+        <form th:include="todos/new :: _form" class="col s12" method="post" th:action="${#mvc.url('TC#update').buildAndExpand(todo.id)}" th:object="${todo}">
+        </form>
+    </div>
+</section>
+</body>
+</html>
